@@ -1,0 +1,12 @@
+1. Setting The $LFS Variable
+export LFS=/mnt/lfs
+
+2. Verify 
+echo $LFS
+
+3. Mount partitions
+mkdir -pv $LFS
+mount -v -t ext4 /dev/<xxx> $LFS
+
+4. Enable swap partition
+/sbin/swapon -v /dev/<zzz>

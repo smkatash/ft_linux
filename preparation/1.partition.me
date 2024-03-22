@@ -1,0 +1,35 @@
+fdisk is started by typing (as root) fdisk device at the command prompt. 
+The basic fdisk commands:
+'
+p print the partition table
+n create a new partition
+d delete a partition
+q quit without saving changes
+w write the new partition table and exit
+t set partition type
+'
+
+1. Commands to run:
+fdisk -l : device check
+fdisk [/dev/sda] device : start
+
+
+2. For each partition run (boot, swap, root):
+Command (m for help): n
+Command action: p
+Partition number (1-4):
+First sector (xxx): <ENTER>
+Last sector (xxx): +256M (for boot), +1G (for swap), <ENTER> (rest for root)
+
+3. Set partition disk as swap type
+Command (m for help): t
+Partition number: (N -> select from the list)
+Hex code or alias: 82 (find hex code for swap type)
+
+4. Save partition table:
+Command (m for help): w
+
+5. Create an ext4 file system on the LFS partition (boot, swap, root):
+lfs partition: mkfs -v -t ext4 /dev/<xxx>
+swap partition: mkswap /dev/<yyy>
+
