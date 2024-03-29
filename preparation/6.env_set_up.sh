@@ -6,7 +6,7 @@ exec env -i HOME=\$HOME TERM=\$TERM PS1='\u:\w\$ ' /bin/bash
 EOF
 )
 
-echo "$BASH_PROFILE_CONTENT" > ~/.bash_profile
+echo "$BASH_PROFILE_CONTENT" > ~/.bash_profile || exit 1
 
 if [ $? -eq 0 ]; then
     printf "\033[36m[ SUCCESS ] ~/.bash_profile created\033[0m\n"
@@ -31,7 +31,7 @@ export MAKEFLAGS=-j\$(nproc)
 EOF
 )
 
-echo "$BASHRC_CONTENT" > ~/.bashrc
+echo "$BASHRC_CONTENT" > ~/.bashrc || exit 1
 
 if [ $? -eq 0 ]; then
     printf "\033[36m[ SUCCESS ] ~/.bashrc created\033[0m\n"

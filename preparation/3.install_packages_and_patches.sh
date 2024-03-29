@@ -6,9 +6,9 @@ fi
 
 mkdir -pv $LFS/sources		|| exit 1
 chmod -v a+wt $LFS/sources	|| exit 1
-wget -q --show-progress	--input-file=resources/wget-list-sysv --continue --directory-prefix=$LFS/sources 
-cp -v resources/md5sums $LFS/sources && pushd $LFS/sources && md5sum -c md5sums && popd 
+wget -q --show-progress	--input-file=resources/wget-list-sysv --continue --directory-prefix=$LFS/sources || exit 1
+cp -v resources/md5sums $LFS/sources && pushd $LFS/sources && md5sum -c md5sums && popd || exit 1
 
-chown root:root $LFS/sources/*
+chown root:root $LFS/sources/* || exit 1
 
 printf "\033[36[m[ SUCCESS ] Packages and patches are installed\033[0m\n"
